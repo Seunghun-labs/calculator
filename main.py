@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, 
-                             QMessageBox)
+                             QMessageBox, QPlainTextEdit)
 from PyQt5.QtGui import QIcon # icon을 추가하기 위한 라이브러리
 
 class Calculator(QWidget):
@@ -9,12 +9,16 @@ class Calculator(QWidget):
         self.initUI()
         
     def initUI(self):
+        self.te1 = QPlainTextEdit()
+        self.te1.setReadOnly(True)
+        
+        
         self.btn1 = QPushButton('Message', self) # Add Button
         self.btn1.clicked.connect(self.activateMessage) # if click button, connect handler function
         
         vbox = QVBoxLayout() # Create vertical layout widget
-        vbox.addStretch(1) # space
-        vbox.addWidget(self.btn1) # button of location
+        vbox.addWidget(self.te1) # TextEdit of location
+        vbox.addWidget(self.btn1) # Button of location
         vbox.addStretch(1) # space
         
         self.setLayout(vbox) # space - button - space layout setting
@@ -25,7 +29,8 @@ class Calculator(QWidget):
         self.show()
         
     def activateMessage(self): # if click button, execute this function
-        QMessageBox.information(self, 'information', 'Button clicked !')
+        # QMessageBox.information(self, 'information', 'Button clicked !')
+        self.te1.appendPlainText("Button Clicked !")
         
         
 if __name__=="__main__":

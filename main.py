@@ -7,8 +7,8 @@ from PyQt5.QtWidgets import QApplication
 
 def main(): # 프로그램 실행(Application) 관련 내용 함수화
     app = QApplication(sys.argv)
-    view = View()
-    Control(view=view)
+    view = View() # Declare class View
+    Control(view=view) # call class Control
     sys.exit(app.exec_()) # exit
 
 if __name__=="__main__":
